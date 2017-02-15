@@ -1,0 +1,221 @@
+﻿<!-- banner -->
+<div class="banner">
+    <div class="container">
+        <h3>Web API <span>Và AngularSJ </span></h3>
+    </div>
+</div>
+<!-- //banner -->
+<!-- banner-bottom -->
+<div class="banner-bottom">
+    <div class="container">
+        <div class="container">
+            <div class="col-md-5 wthree_banner_bottom_left">
+                <div class="video-img">
+                    <a class="play-icon popup-with-zoom-anim" href="#small-dialog">
+                        <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- pop-up-box -->
+                <script src="../../../lib/Template/client/js/jquery.magnific-popup.js" type="text/javascript"></script>
+                <!--//pop-up-box -->
+                <div id="small-dialog" class="mfp-hide">
+                    <iframe src="https://www.youtube.com/embed/kGR16BJELxg"></iframe>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        $('.popup-with-zoom-anim').magnificPopup({
+                            type: 'inline',
+                            fixedContentPos: false,
+                            fixedBgPos: true,
+                            overflowY: 'auto',
+                            closeBtnInside: true,
+                            preloader: false,
+                            midClick: true,
+                            removalDelay: 300,
+                            mainClass: 'my-mfp-zoom-in'
+                        });
+
+                    });
+                </script>
+            </div>
+            <div class="col-md-7 wthree_banner_bottom_right">
+                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav nav-tabs" role="tablist">
+                        <li role="presentation" ng-class="{'active':Menu[$index].MaLoaiSP ==1}" ng-repeat="item in Menu"><a id="home-tab" role="tab" data-toggle="tab" aria-controls="home" ng-click="loadMenuSP($index+1)">{{item.TenLoaiSP}}</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
+                            <div class="agile_ecommerce_tabs">
+                                <div class="col-md-4 agile_ecommerce_tab_left" ng-repeat="item in MenuSP">
+                                    <div class="hs-wrapper">
+                                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%"/>
+                                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%"/>
+                                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%"/>
+                                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%"/>
+                                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%"/>
+                                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />
+                                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%"/>
+                                        <div class="w3_hs_bottom">
+                                            <ul>
+                                                <li>
+                                                    <a  data-toggle="modal" data-target="#myModal" ng-click="viewItem(item)"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <h5><a ui-sref="chitietsp({id:item.MaSP})">{{item.TenSP | cutTitle}}</a></h5>
+                                    <div class="simpleCart_shelfItem">
+                                        <p><i class="item_price">{{item.DonGia | currency: ""}} VNĐ</i></p>
+                                        <form action="#" method="post">
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="w3ls_item" value="Mobile Phone1" />
+                                            <input type="hidden" name="amount" value="350.00" />
+                                            <div>
+                                                <button type="button" class="btn btn-success pull-left" style="width:40%" ng-click="AddItem(item)"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-default pull-right" ui-sref="chitietsp({id:item.MaSP})" style="width:59%">Xem Chi Tiết</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+    </div>
+<!-- //banner-bottom -->
+<!-- banner-bottom1 -->
+<!-- //banner-bottom1 -->
+<!-- special-deals -->
+<!-- //special-deals -->
+<!-- new-products -->
+<div class="new-products">
+    <div class="container">
+        <h3>Sản Phẩm Mới</h3>
+        <div class="agileinfo_new_products_grids">
+            <div class="col-md-3 agileinfo_new_products_grid" ng-repeat="item in SpMoi">
+                <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
+                    <div class="hs-wrapper hs-wrapper1">
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />                      
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />                      
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />                        
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />                        
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />
+                        <div class="w3_hs_bottom w3_hs_bottom_sub">
+                            <ul>
+                                <li>
+                                    <a  data-toggle="modal" data-target="#myModal" ng-click="viewItem(item)"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h5><a ui-sref="chitietsp({id:item.MaSP})">{{item.TenSP | cutTitle}}</a></h5>
+                    <div class="simpleCart_shelfItem">
+                        <p><i class="item_price">{{item.DonGia | currency: ""}} VNĐ</i></p>
+                        <form action="#" method="post">
+                            <input type="hidden" name="cmd" value="_cart">
+                            <input type="hidden" name="add" value="1">
+                            <input type="hidden" name="w3ls_item" value="Red Laptop">
+                            <input type="hidden" name="amount" value="500.00">
+                            <div>
+                                <button type="button" class="btn btn-success pull-left" style="width:40%" ng-click="AddItem(item)"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-default pull-right" ui-sref="chitietsp({id:item.MaSP})" style="width:59%">Xem Chi Tiết</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"> </div>
+<div class="new-products">
+    <div class="container">
+        <h3>Sản Phẩm Hot</h3>
+        <div class="agileinfo_new_products_grids">
+            <div class="col-md-3 agileinfo_new_products_grid" ng-repeat="item in SpHot">
+                <div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
+                    <div class="hs-wrapper hs-wrapper1">
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />   
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />                                             
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />
+                        <img ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" class="img-responsive" style="width:100%;height:100%" />
+                        <div class="w3_hs_bottom w3_hs_bottom_sub">
+                            <ul>
+                                <li>
+                                    <a data-toggle="modal" data-target="#myModal" ng-click="viewItem(item)"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h5><a ui-sref="chitietsp({id:item.MaSP})">{{item.TenSP | cutTitle}}</a></h5>
+                    <div class="simpleCart_shelfItem">
+                        <p><i class="item_price">{{item.DonGia | currency: ""}} VNĐ</i></p>
+                        <form action="#" method="post">
+                            <input type="hidden" name="cmd" value="_cart">
+                            <input type="hidden" name="add" value="1">
+                            <input type="hidden" name="w3ls_item" value="Red Laptop">
+                            <input type="hidden" name="amount" value="500.00">
+                            <div>
+                                <button type="button" class="btn btn-success pull-left" style="width:40%" ng-click="AddItem(item)"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-default pull-right" ui-sref="chitietsp({id:item.MaSP})" style="width:59%">Xem Chi Tiết</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <!-- modal-video -->
+        <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <section>
+                        <div class="modal-body">
+                            <div class="col-md-5 modal_body_left">
+                                <img ng-src="http://localhost:62940/client/image/get?imageName={{info.HinhAnh}}" alt=" " class="img-responsive" />
+                            </div>
+                            <div class="col-md-7 modal_body_right">
+                                <h4>{{info.TenSP}}</h4>
+                                <br />
+                                <span ng-bind-html="info.CauHinh">
+                                </span>
+                                <br />
+                                <div class="modal_body_right_cart simpleCart_shelfItem">
+                                    <p><i class="item_price">{{info.DonGia | currency: "" }} VNĐ</i></p>
+                                    <form action="#" method="post">
+                                        <input type="hidden" name="cmd" value="_cart">
+                                        <input type="hidden" name="add" value="1">
+                                        <input type="hidden" name="w3ls_item" value="Mobile Phone1">
+                                        <input type="hidden" name="amount" value="350.00">
+                                        <button type="button" class="btn btn-success" ng-click="AddItem(info)">Thêm Vào Giỏ Hàng</button>           
+                                    </form>
+                                </div>
+
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- //modal-video -->
+    </div>
+</div>
+<!-- //new-products -->

@@ -1,0 +1,91 @@
+﻿
+<!-- banner -->
+<div class="banner">
+    <div class="container">
+        <h3>Web API <span>Và AngularSJ </span></h3>
+    </div>
+</div>
+<!-- //banner -->
+<div class="banner-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-offset-2">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Ngày Đặt</th>
+                            <th class="text-center">Ngày Giao(Tối Đa 7 Ngày)</th>
+                            <th class="text-center">Tình Trạng Giao Hàng</th>
+                            <th class="text-center">Chi Tiết Đơn Hàng</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle"
+                             ng-repeat="item in donhang" 
+                            title="Xem Chi Tiết Đơn Hàng" style="cursor:pointer">
+                            <td class="text-center" data-toggle="modal" data-target="#myModal">{{item.MaDDH}}</td>
+                            <td class="text-center">{{item.NgayDat | date: 'dd/MM/yyyy'}}</td>
+                            <td class="text-center">{{item.NgayGiao | date: 'dd/MM/yyyy'}}</td>
+                            <td class="text-center">{{item.TinhTrangGiaoHang | emtyFiterCart}}</td>
+                            <td class="text-center">
+                                <button class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="OderDetail(item.chitietDDH)">Xem</button>
+                                <button class="btn btn-danger" ng-click="RemoveOrder(item.chitietDDH.MaDDH)">Huỷ</button>
+                            </td>
+                        </tr>                
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal-video -->
+<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <section>
+                <div class="modal-body">
+                    <div class="col-lg-12">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width:50%">Sản Phẩm</th>
+                                    <th class="text-center" style="width:10%">Số Lượng</th>
+                                    <th class="text-center" style="width:20%">Giá</th>
+                                    <th class="text-center" style="width:20%">Tổng Cộng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in info">
+                                    <td class="text-center" style="width:45%">
+                                        <div class="media">
+                                            <a class="thumbnail pull-left"> <img class="media-object" ng-src="http://localhost:62940/client/image/get?imageName={{item.HinhAnh}}" style="width: 72px; height: 72px;"> </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><a href="#">{{item.TenSP | cutTitle}}</a></h4>
+                                            </div>
+                                        </div>
+                                    </td>                          
+                                    <td class="text-center" style="width:20%"><strong>{{item.SoLuong}}</strong></td>
+                                    <td class="text-center" style="width:20%"><strong>{{item.DonGia | currency: ''}}</strong></td>
+                                    <td class="text-center" style="width:15%"><strong>{{item.ThanhTien | currency: ''}}</strong></td>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td><h3>Thành Tiền</h3></td>
+                                    <td class="text-right"><h4><strong>{{ThanhTien |currency: '' }} VNĐ</strong></h4></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- //modal-video -->

@@ -1,0 +1,139 @@
+﻿<!-- banner -->
+<div class="banner">
+    <div class="container">
+        <h3>Web API <span>Và AngularSJ </span></h3>
+    </div>
+</div>
+<!-- //banner -->
+<div class="banner-bottom">
+    <div class="container">
+        <div class="text-center" ng-hide="show">
+            <span> Giỏ Hàng Trống</span>
+        </div>
+        <!-- Giỏ Hàng -->
+        <div class="container" ng-show="show">
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="width:50%">Sản Phẩm</th>
+                                <th class="text-center" style="width:10%">Số Lượng</th>
+                                <th class="text-center" style="width:20%">Giá</th>
+                                <th class="text-center" style="width:20%">Tổng Cộng</th>
+                                <th class="text-center" style="width:0%"> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in cart.shopCarts">
+                                <td class="text-center" style="width:45%">
+                                    <div class="media">
+                                        <a class="thumbnail pull-left" href="#"> <img class="media-object" ng-src="http://localhost:62940/client/image/get?imageName={{item.image}}" style="width: 72px; height: 72px;"> </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="#">{{item.name | cutTitle}}</a></h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center" style="text-align: center">
+                                    <input type="number" class="form-control" max="50" min="0" id="exampleInputEmail1" value="{{item.quality}}" ng-model="item.quality" ng-change="changeQuality(item.id,item.quality)">
+                                </td>
+                                <td class="text-center" style="width:20%"><strong>{{item.price | currency: ''}} VNĐ</strong></td>
+                                <td class="text-center" style="width:15%"><strong>{{item.gia | currency: ''}} VNĐ</strong></td>
+                                <td class="text-center" style="width:0%">
+                                    <button type="button" class="btn btn-danger pull-right" ng-click="Remove(item.id)">
+                                        <span class="glyphicon glyphicon-remove"></span> Xóa
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td><h5>Tổng</h5></td>
+                                <td class="text-right"><h5><strong>{{cart.thanhtien | currency: ''}} VNĐ</strong></h5></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td><h5>Chiết Khấu</h5></td>
+                                <td class="text-right"><h5><strong>0%</strong></h5></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td><h3>Thành Tiền</h3></td>
+                                <td class="text-right"><h4><strong>{{cart.thanhtien | currency: ''}} VNĐ</strong></h4></td>
+                            </tr>
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>
+                                    <button type="button" class="btn btn-default" ng-click="$back()">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span> Tiếp Tục Mua
+                                    </button>
+                                </td>
+                                <td>
+                                    <div ng-hide="hienthi">
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal88">
+                                            Cần Đăng Nhập<span class="glyphicon glyphicon-play"></span>
+                                        </button>
+                                    </div>
+                                    <div ng-show="hienthi">
+                                        <button type="button" class="btn btn-info" ng-click="XacNhan()">
+                                           Xác Nhận Thông Tin <span ng-class="{'glyphicon glyphicon-hand-down':thongtinmuahang==true}"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!--/ Giỏ Hàng -->
+        <div class="container" ng-show="thongtinmuahang">
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
+                            <div id="legend">
+                                <legend class="">Thông Tin Mua Hàng</legend>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-2 col-form-label">Tên Khách Hàng</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" id="example-text-input" ng-model="ThongTin.HoTen">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-2 col-form-label">Địa Chỉ</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" id="example-text-input" ng-model="ThongTin.DiaChi">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-2 col-form-label">Email</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" id="example-text-input" ng-model="ThongTin.Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-2 col-form-label">Số Điện Thoại</label>
+                                <div class="col-10">
+                                    <input class="form-control" type="text" id="example-text-input" ng-model="ThongTin.SoDienThoai">
+                                </div>
+                            </div>       
+                        </fieldset>
+                        <div>
+                            <button type="button" ng-disabled="cart.shopCarts[0] == undefined" class="btn btn-success pull-right" ng-click="CheckOut()">
+                              Mua Hàng <span class="glyphicon glyphicon-play"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
