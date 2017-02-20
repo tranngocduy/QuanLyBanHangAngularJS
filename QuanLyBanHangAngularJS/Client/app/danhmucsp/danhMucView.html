@@ -26,13 +26,13 @@
                             <div class="panel panel-default" ng-repeat="item in megaMenu">
                                 <div class="panel-heading">
                                     <h4 class="panel-title asd" ng-click="tranfer(item.MaLoaiSP,0);checkName($index,null)" style="cursor:pointer" ng-class="{'glyphicon glyphicon-arrow-right':($index==number && chimuc =='') || (SPtheodanhmuc[0].MaLoaiSP == item.MaLoaiSP && chimuc =='')}">
-                                            {{item.TenLoaiSP}}
+                                        {{item.TenLoaiSP}}
                                     </h4>
                                 </div>
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body panel_text" ng-repeat="item2 in item.ListNCC">
                                         <ul>
-                                            <li ng-class="{'glyphicon glyphicon-triangle-right': ($parent.$index==number && $index==numberchild && chimuc =='') || (SPtheodanhmuc[0].MaLoaiSP == item.MaLoaiSP && SPtheodanhmuc[0].MaNCC == item2.MaNCC && checkncc !=0 && chimuc =='')}"><a ng-click="tranfer(item.MaLoaiSP,item2.MaNCC);checkName($parent.$index,$index)" style="cursor:pointer"> {{item2.TenNCC}}</a></li>
+                                            <li ng-class="{'glyphicon glyphicon-triangle-right': ($parent.$index==number && $index==numberchild && chimuc =='') || (SPtheodanhmuc[0].MaLoaiSP == item.MaLoaiSP && SPtheodanhmuc[0].MaNCC == item2.MaNCC && checkncc !=0 && chimuc =='' && nhacc != null)}"><a ng-click="tranfer(item.MaLoaiSP,item2.MaNCC);checkName($parent.$index,$index)" style="cursor:pointer"> {{item2.TenNCC}}</a></li>
                                         </ul>
                                     </div>
                                 </div>

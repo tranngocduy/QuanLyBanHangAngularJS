@@ -1,9 +1,9 @@
 ﻿(function (myApp) {
     myApp.controller('SanPhamEditController', SanPhamEditController);
 
-    SanPhamEditController.$inject = ['$scope', 'apiService', '$stateParams', 'noteService', '$http', '$state'];
+    SanPhamEditController.$inject = ['$scope', 'apiService', '$stateParams', 'noteService', '$http', '$state', 'ParamsService'];
 
-    function SanPhamEditController($scope, apiService, $stateParams, noteService, $http, $state) {
+    function SanPhamEditController($scope, apiService, $stateParams, noteService, $http, $state, ParamsService) {
         
         $scope.UpdateSP = UpdateSP;
 
@@ -63,7 +63,8 @@
 
                     };
                 noteService.displaySuccess('Cập Nhật Thành Công')
-                $state.go('sanpham');
+                ParamsService.setParams();
+                $state.go('sanpham',{}, { reload: 'sanpham' });
             },function (error) {
                 noteService.displayError('Cập Nhật Thất Bại');
             });

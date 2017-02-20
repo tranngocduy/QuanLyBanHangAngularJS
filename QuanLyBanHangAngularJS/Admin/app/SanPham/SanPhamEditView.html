@@ -106,9 +106,10 @@
                                 </table>
                                 <div class="row">
                                     <div style="margin-top:-2%" class="col-lg-7">
-                                        <input type="file" ng-files="getTheFiles($files)" />
+                                        <input type="file" ng-files="getTheFiles($files)" name="imageName" ng-model="imagesrc[0].Name" check-files="imagesrc[0].Name"/>
                                     </div>
                                 </div>
+                                <span ng-show="frmUpdateSP.imageName.$invalid" style="color:red">- Hình Ảnh Không Phù Hợp -</span>
                             </div>
                         </div>
 

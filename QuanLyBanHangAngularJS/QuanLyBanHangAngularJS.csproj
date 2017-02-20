@@ -81,7 +81,9 @@
     <Content Include="Admin\app\SanPham\SanPhamEditController.js" />
     <Content Include="Admin\app\SanPham\SanPhamEditView.html" />
     <Content Include="Admin\app\SanPham\SanPhamListView.html" />
+    <Content Include="Admin\share\directive\fileDirective.js" />
     <Content Include="Admin\share\directive\UploadDirective.js" />
+    <Content Include="Admin\share\Service\ParamService.js" />
     <Content Include="Admin\share\Service\SeoService.js" />
     <Content Include="Admin\share\views\baseView.html" />
     <Content Include="Client\app.js" />

@@ -1,9 +1,9 @@
 ﻿(function (myApp) {
     myApp.controller('SanPhamAddController', SanPhamAddController);
 
-    SanPhamAddController.$inject = ['$scope', '$http', 'apiService', '$state', 'noteService']
+    SanPhamAddController.$inject = ['$scope', '$http', 'apiService', '$state', 'noteService', 'ParamsService']
 
-    function SanPhamAddController($scope, $http, apiService, $state, noteService) {
+    function SanPhamAddController($scope, $http, apiService, $state, noteService, ParamsService) {
         $scope.SP = {};
         $scope.ckeditorOptions = {
             language: 'vi',
@@ -48,6 +48,7 @@
             });
         }
         $scope.AddSP = function () {
+            var flag = 0;
             apiService.post('http://localhost:62940/sanpham/create', $scope.SP, function (result) {
                 if ($scope.imagesrc != null)
                 {
@@ -60,12 +61,17 @@
                         }
                     };
                     $http(request).then(function (success) {
-
+                        noteService.displaySuccess('Thêm Hình Ảnh Sản Phẩm Thành Công');
                     }), function () {
-
+                        flag = 1;
                     };
                 } 
-                 noteService.displaySuccess('Thêm Sản Phẩm Thành Công');
+                noteService.displaySuccess('Thêm Sản Phẩm Thành Công');
+                if (flag = 1)
+                {
+                noteService.displayError('File Hình Ảnh Không Phù Hợp');
+                }
+                ParamsService.setParams();
                 $state.go('sanpham')
             }, function (error) {
                 noteService.displayError('Thêm Sản Phẩm Thất Bại');

@@ -1,9 +1,9 @@
 ﻿(function (myApp) {
     myApp.controller('SanPhamController', SanPhamController);
 
-    SanPhamController.$inject = ['$scope', 'apiService', 'noteService', '$ngBootbox','$state'];
+    SanPhamController.$inject = ['$scope', 'apiService', 'noteService', '$ngBootbox', '$state', 'ParamsService'];
 
-    function SanPhamController($scope, apiService, noteService, $ngBootBox, $state) {
+    function SanPhamController($scope, apiService, noteService, $ngBootBox, $state, ParamsService) {
         $scope.SanPham = [];
         $scope.Info = Info;
         $scope.keyword = '';
@@ -12,6 +12,7 @@
         $scope.loadData = loadData;
         $scope.delSP = delSP;
         $scope.reload = reload;
+   
 
         function reload() {
             $state.reload();
@@ -40,7 +41,7 @@
             var config = {
                 params: {
                     page: page,
-                    pagesize: 100,
+                    pagesize: 10,
                     keyword : $scope.keyword
                 }
             }
@@ -49,10 +50,15 @@
                 $scope.page = result.data.Page;
                 $scope.pageCount = result.data.TotalCount;
                 $scope.pagesCount = result.data.TotalPage;
+                if (ParamsService.getParams() == 0) {
+                    $state.reload();
+                    ParamsService.Params();
+                }
             }, function (Erorr) {
                 noteService.displayError('Load Dữ Liệu Thât Bại')
             });
         };
+       
         loadData();
     };
 })(angular.module('Shop.sanpham'))

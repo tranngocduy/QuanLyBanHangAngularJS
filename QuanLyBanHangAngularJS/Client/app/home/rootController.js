@@ -13,6 +13,17 @@
         $scope.DangKy = DangKy;
         $scope.tranfer = tranfer;
         $scope.Search = Search;
+        $scope.enable = true;
+        
+
+        var enableBtn = function () {
+            $scope.$apply(function () {
+                $scope.enable = false;
+            });
+        };
+        $scope.key = "6LfNJBYUAAAAAHNKRdvqWLmxDGx_Yr7hTlYXehBi";
+        window.enableBtn = enableBtn;
+
 
         $scope.MD5Login = function (PassLogin) {
             $scope.user.password = md5.createHash(PassLogin || '');;
@@ -37,6 +48,7 @@
             apiService.post('http://localhost:62940/client/register', $scope.ThongTin, function (result) {
                 noteService.displaySuccess('Đăng Ký Thành Công');
                 $scope.ThongTin = {};
+                window.grecaptcha.reset();
             }, function (error) {
                 noteService.displayError('Đăng Ký Thất Bại');
             })

@@ -10,7 +10,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
-                <h4 class="modal-title" id="myModalLabel" ng-hide="show">Đăng Nhập / Đăng Ký {{user}}</h4>
+                <h4 class="modal-title" id="myModalLabel" ng-hide="show">Đăng Nhập / Đăng Ký</h4>
                 <h4 class="modal-title" id="myModalLabel" ng-show="show">Đăng Nhập Thành Công</h4>
             </div>
             <div class="modal-body modal-body-sub">
@@ -38,8 +38,8 @@
                                 <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
                                     <div class="facts">
                                         <div class="register">
-                                            <form role="form" novalidate name="frmDangKy" ng-submit="DangKy()">
-                                                <div>        {{ThongTin.MatKhau}}
+                                            <form role="form" novalidate method="post" name="frmDangKy" ng-submit="DangKy()">
+                                                <div>
                                                     <input placeholder="Tên Tài Khoản" name="TaiKhoan" type="text" ng-required="true" ng-maxlength="15" ng-minlength="3" ng-model="ThongTin.TaiKhoan">
                                                     <span ng-show="frmDangKy.TaiKhoan.$touched && frmDangKy.TaiKhoan.$error.required" style="color:red">- Phải Nhập Tên -</span>
                                                     <span ng-show="frmDangKy.TaiKhoan.$touched && frmDangKy.TaiKhoan.$error.minlength" style="color:red">- Ít Nhất 3 Ký Tự -</span>
@@ -63,14 +63,18 @@
                                                     <span ng-show="frmDangKy.Email.$touched && frmDangKy.Email.$error.maxlength" style="color:red">- Tối Đa 50 Ký Tự -</span>
                                                     <span ng-show="frmDangKy.Email.$touched && frmDangKy.Email.$invalid" style="color:red">- Không Đúng Định Dạng Email -</span>
                                                 </div>
+                                                <div style="padding-top:15px">
+                                                    <input placeholder="Họ Tên Người Dùng" name="DiaChi" type="text" ng-model="ThongTin.HoTen" ng-required="false">
+                                                </div>
                                                 <div style="padding-bottom:15px;padding-top:15px">
                                                     <input placeholder="Địa Chỉ" name="DiaChi" type="text" ng-model="ThongTin.DiaChi" ng-required="false">
                                                 </div>
-                                                <div>
+                                                <div style="padding-bottom:15px">
                                                     <input placeholder="Số Điện Thoại" name="SoDienThoai" type="text" ng-model="ThongTin.SoDienThoai" ng-required="false">
                                                 </div>
+                                                <div class="g-recaptcha" data-sitekey="{{key}}" data-type="image" data-callback="enableBtn"></div>
                                                 <div class="sign-up">
-                                                    <input type="submit" ng-disabled="frmDangKy.$invalid" value="Đăng Ký" />
+                                                    <input type="submit" ng-disabled="frmDangKy.$invalid||enable" value="Đăng Ký" />
                                                 </div>
                                             </form>
                                         </div>
@@ -205,6 +209,7 @@
         </div>
     </div>
 </div>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <!-- //newsletter -->
 <!-- footer -->
 <!-- //footer -->
